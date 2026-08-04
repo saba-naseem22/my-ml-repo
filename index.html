@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Refresh / Content Opportunity Scoring</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #222;
+            background: #f7f7f7;
+        }
+
+        article {
+            background: white;
+            padding: 45px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            font-size: 38px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            margin-top: 40px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+
+        .summary {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .number {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<article>
+
+    <h1>
+        Refresh / Content Opportunity Scoring:
+        A Data-Driven Approach to Prioritizing Content for Review
+    </h1>
+
+    <p><strong>Search Intelligence Capstone</strong></p>
+
+    <h2>Abstract</h2>
+
+    <div class="summary">
+        <p>
+            This project studies how search performance data can be used to
+            identify content that may be worth reviewing or refreshing.
+            Using real FlyRank search data, we analyzed impressions, clicks,
+            click-through rate (CTR), and average search position for
+            151,713 content items.
+            We identified 16,714 content items as potential refresh candidates
+            and created an opportunity score using impressions, CTR, and
+            search position.
+            The final ranking helps prioritize content for review based on
+            observed search-performance signals.
+            The results are intended as decision-support recommendations,
+            not as proof that refreshing a page will cause better performance.
+        </p>
+    </div>
+
+    <h2>Introduction / Problem Statement</h2>
+
+    <p>
+        The main goal of this project is to identify which content items may
+        deserve a refresh or closer review. Instead of reviewing a large
+        number of content items manually, the analysis uses search-performance
+        signals to rank potential opportunities. The resulting ranking can
+        help content teams focus their attention on items with stronger
+        observed opportunities.
+    </p>
+
+    <h2>Data</h2>
+
+    <p>
+        The analysis used the FlyRank ML Internship dataset. The available
+        data covered 2025-01-27 to 2026-06-30 and contained 78,835,655 rows.
+        After aggregation, 151,713 unique content items were analyzed.
+        The analysis focused on impressions, clicks, CTR, and average search
+        position.
+    </p>
+
+    <p>
+        Client names, domains, URLs, private queries, credentials, and raw
+        exports were not used in the public-facing analysis.
+    </p>
+
+    <h2>Methodology</h2>
+
+    <p>
+        The analysis first aggregated search data at the content level and
+        calculated total impressions, total clicks, CTR, and average search
+        position. Refresh candidates were then identified using the project's
+        search-performance criteria.
+    </p>
+
+    <p>
+        An opportunity score was created from three signals: impression
+        volume, CTR, and average position. The refined score gives higher
+        opportunity to content with stronger visibility and weaker click
+        performance. Candidates were then ranked and assigned priority levels
+        to create an actionable refresh list.
+    </p>
+
+    <h2>Results</h2>
+
+    <div class="summary">
+        <p><span class="number">151,713</span><br>
+        Total content items analyzed</p>
+
+        <p><span class="number">16,714</span><br>
+        Potential refresh candidates</p>
+
+        <p><span class="number">7,010</span><br>
+        High-priority candidates</p>
+
+        <p><span class="number">0.3111</span><br>
+        Average CTR across all analyzed content</p>
+
+        <p><span class="number">0.0885</span><br>
+        Average CTR among refresh candidates</p>
+
+        <p><span class="number">-0.2367</span><br>
+        Opportunity score vs CTR correlation</p>
+    </div>
+
+    <p>
+        The analysis covered 151,713 content items and identified 16,714
+        potential refresh candidates. The average CTR across all analyzed
+        content was 0.3111, while the average CTR among refresh candidates
+        was 0.0885.
+    </p>
+
+    <p>
+        The refined opportunity score showed a negative correlation of
+        -0.2367 with CTR, indicating that higher-scored opportunities
+        generally had lower CTR.
+    </p>
+
+    <h2>Limitations & Honest Framing</h2>
+
+    <p>
+        This analysis identifies patterns in observed search-performance data
+        and should be treated as decision support. A high opportunity score
+        does not prove that refreshing a page will cause higher CTR or better
+        rankings.
+    </p>
+
+    <p>
+        The analysis does not establish causal impact, and the recommendations
+        should therefore be treated as review priorities rather than
+        guaranteed outcomes.
+    </p>
+
+    <h2>Ranked Recommendations</h2>
+
+    <p>
+        The final scoring system produces a ranked list of content items for
+        review. The highest-ranked items should be reviewed first because
+        they combine stronger opportunity signals across impressions, CTR,
+        and average search position.
+    </p>
+
+    <p>
+        The exported top-20 recommendation list provides a practical starting
+        point for a content refresh workflow.
+    </p>
+
+    <h3>Recommended Action Playbook</h3>
+
+    <ol>
+        <li>Start with the highest-priority content items.</li>
+        <li>Review pages with high impressions and weak CTR.</li>
+        <li>Check search position alongside CTR before deciding on a refresh.</li>
+        <li>Use the opportunity score to prioritize human review.</li>
+        <li>Monitor performance after any future content changes.</li>
+    </ol>
+
+    <h2>Reproducibility</h2>
+
+    <p>
+        The workflow can be reproduced from the accompanying notebook.
+        It covers data loading, quality checks, content-level aggregation,
+        CTR calculation, refresh-candidate identification, opportunity
+        scoring, validation, priority assignment, and recommendation export.
+    </p>
+
+    <p>
+        <strong>Notebook:</strong>
+        capstone_refresh_opportunity.ipynb
+    </p>
+
+    <h2>Acknowledgments & Data Credit</h2>
+
+    <p>
+        Built on the FlyRank ML Internship dataset.
+    </p>
+
+    <p>
+        Data source:
+        <a href="https://flyrank.ai" target="_blank">
+            FlyRank AI
+        </a>
+    </p>
+
+    <footer>
+        <p>
+            Search Intelligence Capstone — Refresh / Content Opportunity
+            Scoring
+        </p>
+    </footer>
+
+</article>
+
+</body>
+</html>
